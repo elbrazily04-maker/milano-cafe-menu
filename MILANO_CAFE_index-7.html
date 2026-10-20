@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>MILANO CAFE | Menu</title>
+<style>
+:root{--bg:#090909;--panel:#151515;--gold:#d8b45b;--muted:#b7b7b7;--line:#34302a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at top,#292216 0,#090909 35rem);color:#fff;font-family:Arial,"Noto Sans Arabic",sans-serif;line-height:1.45}
+header{padding:34px 18px 25px;text-align:center;border-bottom:1px solid var(--line)}
+.brand{font-family:Georgia,serif;font-size:clamp(2.2rem,10vw,3.7rem);letter-spacing:3px;color:var(--gold);margin:0}
+.tagline{color:#eee;margin:6px 0 0;font-size:1rem}
+.subtitle{color:var(--muted);font-size:.88rem;margin-top:6px}
+nav{display:flex;gap:8px;padding:14px 12px;overflow-x:auto;position:sticky;top:0;background:#0b0b0bf2;backdrop-filter:blur(8px);z-index:5;border-bottom:1px solid var(--line)}
+nav a{white-space:nowrap;text-decoration:none;color:var(--gold);border:1px solid #5b4b2a;border-radius:22px;padding:8px 12px;font-size:.88rem}
+main{max-width:760px;margin:0 auto;padding:12px}
+.category{background:linear-gradient(145deg,#171717,#101010);border:1px solid var(--line);border-radius:18px;margin:14px 0;padding:16px;scroll-margin-top:80px;box-shadow:0 8px 25px #0005}
+.section-title{display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:4px}
+.icon{font-size:2rem;background:#2b2417;border-radius:14px;width:54px;height:54px;display:grid;place-items:center}
+h2{color:var(--gold);font-size:1.35rem;margin:0}
+.section-title p{color:var(--muted);margin:2px 0 0;direction:ltr;text-align:right;font-size:.9rem}
+.item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 2px;border-bottom:1px dashed #38342d}
+.item:last-child{border-bottom:0}
+.names{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ar{font-size:1rem;font-weight:700}
+.en{font-size:.82rem;color:var(--muted);direction:ltr;text-align:right}
+.price{color:var(--gold);font-size:1.05rem;font-weight:700;white-space:nowrap}
+.price small{font-size:.72rem;color:var(--muted);font-weight:400}
+.note{text-align:center;color:var(--muted);font-size:.78rem;padding:8px 10px 22px}
+.top{display:inline-block;margin:8px 0 0;color:var(--gold);text-decoration:none;font-size:.85rem}
+@media(min-width:600px){main{padding:20px}.category{padding:22px}.item{padding:14px 4px}}
+</style>
+</head>
+<body id="top">
+<header>
+  <p class="brand">MILANO CAFE</p>
+  <p class="tagline">مزاجك له حكاية</p>
+  <p class="subtitle">MENU • قائمة الأسعار • الأسعار بالجنيه المصري</p>
+  <p id="syncStatus" class="subtitle" aria-live="polite">جاري تحديث القائمة من ملف الأسعار…</p>
+</header>
+<nav aria-label="Menu categories"><a href="#cat1">☕ مشروبات ساخنة</a>
+<a href="#cat2">🧊 القهوة الباردة</a>
+<a href="#cat3">🍹 العصائر والموهيتو</a>
+<a href="#cat4">🥤 ميلك شيك</a>
+<a href="#cat5">🧇 الوافل</a>
+<a href="#cat6">🍰 الكيك</a>
+<a href="#cat7">♨️ الشيشة</a>
+<a href="#cat8">🎮 بلايستيشن</a></nav>
+<main>
+
+    <section class="category" id="cat1">
+      <div class="section-title"><span class="icon">☕</span><div><h2 dir="rtl">مشروبات ساخنة</h2><p>Hot Drinks</p></div></div>
+      
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">شاي</span><span class="en">Tea</span></div>
+          <div class="price">30 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">شاي أخضر</span><span class="en">Green Tea</span></div>
+          <div class="price">35 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">شاي نكهات</span><span class="en">Flavoured Tea</span></div>
+          <div class="price">40 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">قهوة تركي</span><span class="en">Turkish Coffee</span></div>
+          <div class="price">40 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">قهوة تركي دبل</span><span class="en">Double Turkish Coffee</span></div>
+          <div class="price">55 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">قهوة فرنساوي</span><span class="en">French Coffee</span></div>
+          <div class="price">50 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">قهوة بندق</span><span class="en">Hazelnut Coffee</span></div>
+          <div class="price">60 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">نسكافيه</span><span class="en">Nescafe</span></div>
+          <div class="price">50 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">إسبريسو</span><span class="en">Espresso</span></div>
+          <div class="price">50 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">إسبريسو دبل</span><span class="en">Double Espresso</span></div>
+          <div class="price">65 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">كابتشينو</span><span class="en">Cappuccino</span></div>
+          <div class="price">75 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">لاتيه</span><span class="en">Latte</span></div>
+          <div class="price">80 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">موكا</span><span class="en">Mocha</span></div>
+          <div class="price">85 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">هوت شوكليت</span><span class="en">Hot Chocolate</span></div>
+          <div class="price">80 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">سحلب</span><span class="en">Sahlab</span></div>
+          <div class="price">70 <small>ج.م</small></div>
+        </div>
+    </section>
+    <section class="category" id="cat2">
+      <div class="section-title"><span class="icon">🧊</span><div><h2 dir="rtl">القهوة الباردة</h2><p>Iced Coffee</p></div></div>
+      
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">آيس كوفي</span><span class="en">Iced Coffee</span></div>
+          <div class="price">85 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">آيس لاتيه</span><span class="en">Iced Latte</span></div>
+          <div class="price">90 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">آيس موكا</span><span class="en">Iced Mocha</span></div>
+          <div class="price">100 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">آيس كراميل لاتيه</span><span class="en">Iced Caramel Latte</span></div>
+          <div class="price">100 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">آيس وايت موكا</span><span class="en">Iced White Mocha</span></div>
+          <div class="price">110 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">فرابيه شوكولاتة</span><span class="en">Chocolate Frappe</span></div>
+          <div class="price">110 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">فرابيه كراميل</span><span class="en">Caramel Frappe</span></div>
+          <div class="price">110 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">فرابيه لوتس</span><span class="en">Lotus Frappe</span></div>
+          <div class="price">125 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">فرابيه أوريو</span><span class="en">Oreo Frappe</span></div>
+          <div class="price">120 <small>ج.م</small></div>
+        </div>
+    </section>
+    <section class="category" id="cat3">
+      <div class="section-title"><span class="icon">🍹</span><div><h2 dir="rtl">العصائر والموهيتو</h2><p>Juices & Mojito</p></div></div>
+      
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">عصير برتقال</span><span class="en">Orange Juice</span></div>
+          <div class="price">65 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">عصير مانجو</span><span class="en">Mango Juice</span></div>
+          <div class="price">80 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">عصير فراولة</span><span class="en">Strawberry Juice</span></div>
+          <div class="price">70 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">عصير جوافة</span><span class="en">Guava Juice</span></div>
+          <div class="price">65 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">ليمون</span><span class="en">Lemon Juice</span></div>
+          <div class="price">55 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">ليمون بالنعناع</span><span class="en">Lemon Mint</span></div>
+          <div class="price">65 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">كوكتيل فواكه</span><span class="en">Fruit Cocktail</span></div>
+          <div class="price">90 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">موهيتو كلاسيك</span><span class="en">Classic Mojito</span></div>
+          <div class="price">85 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">موهيتو بلو</span><span class="en">Blue Mojito</span></div>
+          <div class="price">95 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">موهيتو فراولة</span><span class="en">Strawberry Mojito</span></div>
+          <div class="price">95 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">موهيتو باشن فروت</span><span class="en">Passion Fruit Mojito</span></div>
+          <div class="price">110 <small>ج.م</small></div>
+        </div>
+    </section>
+    <section class="category" id="cat4">
+      <div class="section-title"><span class="icon">🥤</span><div><h2 dir="rtl">ميلك شيك</h2><p>Milkshakes</p></div></div>
+      
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">ميلك شيك شوكولاتة</span><span class="en">Chocolate Milkshake</span></div>
+          <div class="price">100 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">ميلك شيك فراولة</span><span class="en">Strawberry Milkshake</span></div>
+          <div class="price">95 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">ميلك شيك فانيليا</span><span class="en">Vanilla Milkshake</span></div>
+          <div class="price">90 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">أوريو شيك</span><span class="en">Oreo Shake</span></div>
+          <div class="price">110 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">لوتس شيك</span><span class="en">Lotus Shake</span></div>
+          <div class="price">120 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">نوتيلا شيك</span><span class="en">Nutella Shake</span></div>
+          <div class="price">120 <small>ج.م</small></div>
+        </div>
+    </section>
+    <section class="category" id="cat5">
+      <div class="section-title"><span class="icon">🧇</span><div><h2 dir="rtl">الوافل</h2><p>Waffles</p></div></div>
+      
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">وافل شوكولاتة</span><span class="en">Chocolate Waffle</span></div>
+          <div class="price">100 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">وافل نوتيلا</span><span class="en">Nutella Waffle</span></div>
+          <div class="price">120 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">وافل لوتس</span><span class="en">Lotus Waffle</span></div>
+          <div class="price">130 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">وافل فواكه</span><span class="en">Fruit Waffle</span></div>
+          <div class="price">130 <small>ج.م</small></div>
+        </div>
+    </section>
+    <section class="category" id="cat6">
+      <div class="section-title"><span class="icon">🍰</span><div><h2 dir="rtl">الكيك</h2><p>Cakes</p></div></div>
+      
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">قطعة كيك شوكولاتة</span><span class="en">Chocolate Cake Slice</span></div>
+          <div class="price">80 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">قطعة ريد فيلفيت</span><span class="en">Red Velvet Slice</span></div>
+          <div class="price">90 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">قطعة تشيز كيك</span><span class="en">Cheesecake Slice</span></div>
+          <div class="price">100 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">قطعة كيك لوتس</span><span class="en">Lotus Cake Slice</span></div>
+          <div class="price">100 <small>ج.م</small></div>
+        </div>
+    </section>
+    <section class="category" id="cat7">
+      <div class="section-title"><span class="icon">♨️</span><div><h2 dir="rtl">الشيشة</h2><p>Shisha</p></div></div>
+      
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">شيشة معسل</span><span class="en">Classic Molasses</span></div>
+          <div class="price">150 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">تفاحتين</span><span class="en">Two Apples</span></div>
+          <div class="price">150 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">نعناع</span><span class="en">Mint</span></div>
+          <div class="price">150 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">عنب ونعناع</span><span class="en">Grape Mint</span></div>
+          <div class="price">160 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">بلو بيري</span><span class="en">Blueberry</span></div>
+          <div class="price">170 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">ميكس</span><span class="en">Mixed Flavour</span></div>
+          <div class="price">180 <small>ج.م</small></div>
+        </div>
+    </section>
+    <section class="category" id="cat8">
+      <div class="section-title"><span class="icon">🎮</span><div><h2 dir="rtl">بلايستيشن</h2><p>PlayStation</p></div></div>
+      
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">ساعة بلايستيشن</span><span class="en">1 Hour</span></div>
+          <div class="price">60 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">ساعتان بلايستيشن</span><span class="en">2 Hours</span></div>
+          <div class="price">110 <small>ج.م</small></div>
+        </div>
+        <div class="item">
+          <div class="names"><span class="ar" dir="rtl">3 ساعات بلايستيشن</span><span class="en">3 Hours</span></div>
+          <div class="price">150 <small>ج.م</small></div>
+        </div>
+    </section>
+<div class="note">أهلًا بيكم في MILANO CAFE ✦ الأسعار بالجنيه المصري وقد تتغير حسب تحديثات الكافيه.<br><a class="top" href="#top">العودة إلى أعلى القائمة ↑</a></div>
+</main>
+<script>
+(() => {
+  const SHEET_ID = '14XcRUnYrLQGLo8QDkBjD20hEqOYNq5fM';
+  const categories = [
+    {sheet:'Hot Drinks', ar:'مشروبات ساخنة', en:'Hot Drinks', icon:'☕'},
+    {sheet:'Iced Coffee', ar:'القهوة الباردة', en:'Iced Coffee', icon:'🧊'},
+    {sheet:'Juices & Mojito', ar:'العصائر والموهيتو', en:'Juices & Mojito', icon:'🍹'},
+    {sheet:'Milkshakes', ar:'ميلك شيك', en:'Milkshakes', icon:'🥤'},
+    {sheet:'Waffles', ar:'الوافل', en:'Waffles', icon:'🧇'},
+    {sheet:'Cakes', ar:'الكيك', en:'Cakes', icon:'🍰'},
+    {sheet:'Shisha', ar:'الشيشة', en:'Shisha', icon:'♨️'},
+    {sheet:'PlayStation', ar:'بلايستيشن', en:'PlayStation', icon:'🎮'}
+  ];
+  const status = document.getElementById('syncStatus');
+  function parseGViz(text) {
+    const start = text.indexOf('{');
+    const end = text.lastIndexOf('}');
+    if (start < 0 || end < start) throw new Error('Invalid sheet response');
+    return JSON.parse(text.slice(start, end + 1));
+  }
+  async function loadSheet(cat, i) {
+    const url = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:json&sheet=' + encodeURIComponent(cat.sheet) + '&_=' + Date.now();
+    const response = await fetch(url, {cache:'no-store'});
+    if (!response.ok) throw new Error('Could not load ' + cat.sheet);
+    const data = parseGViz(await response.text());
+    if (!data.table || !data.table.rows) throw new Error('No rows');
+    const rows = data.table.rows.map(r => (r.c || []).map(c => c && c.v != null ? String(c.v) : ''));
+    const headerIndex = rows.findIndex(r => r.some(v => v.toLowerCase().includes('item (english)')));
+    if (headerIndex < 0) throw new Error('Header not found: ' + cat.sheet);
+    const items = rows.slice(headerIndex + 1).map(r => ({en:(r[0]||'').trim(), ar:(r[1]||'').trim(), price:(r[2]||'').trim()}))
+      .filter(x => x.en && x.ar && x.price !== '');
+    if (!items.length) throw new Error('No menu items: ' + cat.sheet);
+    return {...cat, id:'cat' + (i+1), items};
+  }
+  function esc(value) {
+    return String(value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  }
+  function render(data) {
+    const nav = document.querySelector('nav');
+    const main = document.querySelector('main');
+    nav.innerHTML = data.map(c => `<a href="#${c.id}">${c.icon} ${esc(c.ar)}</a>`).join('');
+    main.innerHTML = data.map(c => `
+      <section class="category" id="${c.id}">
+        <div class="section-title"><span class="icon">${c.icon}</span><div><h2 dir="rtl">${esc(c.ar)}</h2><p>${esc(c.en)}</p></div></div>
+        ${c.items.map(item => `<div class="item"><div class="names"><span class="ar" dir="rtl">${esc(item.ar)}</span><span class="en">${esc(item.en)}</span></div><div class="price">${esc(item.price)} <small>ج.م</small></div></div>`).join('')}
+      </section>`).join('') + '<div class="note">أهلًا بيكم في MILANO CAFE ✦ الأسعار بالجنيه المصري وقد تتغير حسب تحديثات الكافيه.<br><a class="top" href="#top">العودة إلى أعلى القائمة ↑</a></div>';
+  }
+  async function sync() {
+    try {
+      const data = await Promise.all(categories.map(loadSheet));
+      render(data);
+      status.textContent = 'تم تحديث الأسعار من ملف Google Sheets';
+      status.style.color = '#d8b45b';
+    } catch (err) {
+      status.textContent = 'تعذر الاتصال بملف الأسعار؛ المعروض حاليًا هو آخر منيو محفوظ. تأكد من إتاحة ملف Google Sheets للعرض.';
+      status.style.color = '#f0a0a0';
+      console.warn('MILANO menu sync failed:', err);
+    }
+  }
+  sync();
+  // Refresh every 60 seconds while the menu remains open.
+  setInterval(sync, 60000);
+})();
+</script>
+</body>
+</html>
