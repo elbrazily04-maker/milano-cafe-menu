@@ -319,65 +319,64 @@ h2{color:var(--gold);font-size:1.35rem;margin:0}
 </main>
 <script>
 (() => {
-  const SHEET_ID = '14XcRUnYrLQGLo8QDkBjD20hEqOYNq5fM';
+  const CSV_URL = 'https://raw.githubusercontent.com/elbrazily04-maker/milano-cafe-menu/main/MILANO_CAFE_Menu_Editable-2.xlsx%20-%20Menu%20-%20Milano.csv';
   const categories = [
-    {sheet:'Hot Drinks', ar:'مشروبات ساخنة', en:'Hot Drinks', icon:'☕'},
-    {sheet:'Iced Coffee', ar:'القهوة الباردة', en:'Iced Coffee', icon:'🧊'},
-    {sheet:'Juices & Mojito', ar:'العصائر والموهيتو', en:'Juices & Mojito', icon:'🍹'},
-    {sheet:'Milkshakes', ar:'ميلك شيك', en:'Milkshakes', icon:'🥤'},
-    {sheet:'Waffles', ar:'الوافل', en:'Waffles', icon:'🧇'},
-    {sheet:'Cakes', ar:'الكيك', en:'Cakes', icon:'🍰'},
-    {sheet:'Shisha', ar:'الشيشة', en:'Shisha', icon:'♨️'},
-    {sheet:'PlayStation', ar:'بلايستيشن', en:'PlayStation', icon:'🎮'}
+    {keys:['Hot Drinks'], ar:'مشروبات ساخنة', en:'Hot Drinks', icon:'☕'},
+    {keys:['Iced Coffee'], ar:'القهوة الباردة', en:'Iced Coffee', icon:'🧊'},
+    {keys:['Fresh Juice & Mojito','Juices & Mojito'], ar:'العصائر والموهيتو', en:'Fresh Juice & Mojito', icon:'🍹'},
+    {keys:['Milkshakes'], ar:'ميلك شيك', en:'Milkshakes', icon:'🥤'},
+    {keys:['Waffles'], ar:'الوافل', en:'Waffles', icon:'🧇'},
+    {keys:['Cakes'], ar:'الكيك', en:'Cakes', icon:'🍰'},
+    {keys:['Shisha'], ar:'الشيشة', en:'Shisha', icon:'♨️'},
+    {keys:['PlayStation'], ar:'بلايستيشن', en:'PlayStation', icon:'🎮'}
   ];
   const status = document.getElementById('syncStatus');
-  function parseGViz(text) {
-    const start = text.indexOf('{');
-    const end = text.lastIndexOf('}');
-    if (start < 0 || end < start) throw new Error('Invalid sheet response');
-    return JSON.parse(text.slice(start, end + 1));
-  }
-  async function loadSheet(cat, i) {
-    const url = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:json&sheet=' + encodeURIComponent(cat.sheet) + '&_=' + Date.now();
-    const response = await fetch(url, {cache:'no-store'});
-    if (!response.ok) throw new Error('Could not load ' + cat.sheet);
-    const data = parseGViz(await response.text());
-    if (!data.table || !data.table.rows) throw new Error('No rows');
-    const rows = data.table.rows.map(r => (r.c || []).map(c => c && c.v != null ? String(c.v) : ''));
-    const headerIndex = rows.findIndex(r => r.some(v => v.toLowerCase().includes('item (english)')));
-    if (headerIndex < 0) throw new Error('Header not found: ' + cat.sheet);
-    const items = rows.slice(headerIndex + 1).map(r => ({en:(r[0]||'').trim(), ar:(r[1]||'').trim(), price:(r[2]||'').trim()}))
-      .filter(x => x.en && x.ar && x.price !== '');
-    if (!items.length) throw new Error('No menu items: ' + cat.sheet);
-    return {...cat, id:'cat' + (i+1), items};
+  function parseCSV(text) {
+    const rows = [];
+    let row = [], cell = '', quoted = false;
+    for (let i = 0; i < text.length; i++) {
+      const ch = text[i], next = text[i + 1];
+      if (ch === '"' && quoted && next === '"') { cell += '"'; i++; }
+      else if (ch === '"') quoted = !quoted;
+      else if (ch === ',' && !quoted) { row.push(cell.trim()); cell = ''; }
+      else if ((ch === '\n' || ch === '\r') && !quoted) {
+        if (ch === '\r' && next === '\n') i++;
+        row.push(cell.trim()); cell = '';
+        if (row.some(v => v !== '')) rows.push(row);
+        row = [];
+      } else cell += ch;
+    }
+    row.push(cell.trim());
+    if (row.some(v => v !== '')) rows.push(row);
+    return rows;
   }
   function esc(value) {
     return String(value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
   }
   function render(data) {
-    const nav = document.querySelector('nav');
-    const main = document.querySelector('main');
-    nav.innerHTML = data.map(c => `<a href="#${c.id}">${c.icon} ${esc(c.ar)}</a>`).join('');
-    main.innerHTML = data.map(c => `
-      <section class="category" id="${c.id}">
-        <div class="section-title"><span class="icon">${c.icon}</span><div><h2 dir="rtl">${esc(c.ar)}</h2><p>${esc(c.en)}</p></div></div>
-        ${c.items.map(item => `<div class="item"><div class="names"><span class="ar" dir="rtl">${esc(item.ar)}</span><span class="en">${esc(item.en)}</span></div><div class="price">${esc(item.price)} <small>ج.م</small></div></div>`).join('')}
-      </section>`).join('') + '<div class="note">أهلًا بيكم في MILANO CAFE ✦ الأسعار بالجنيه المصري وقد تتغير حسب تحديثات الكافيه.<br><a class="top" href="#top">العودة إلى أعلى القائمة ↑</a></div>';
+    document.querySelector('nav').innerHTML = data.map((c,i) => '<a href="#cat'+(i+1)+'">'+c.icon+' '+esc(c.ar)+'</a>').join('');
+    document.querySelector('main').innerHTML = data.map((c,i) => '<section class="category" id="cat'+(i+1)+'"><div class="section-title"><span class="icon">'+c.icon+'</span><div><h2 dir="rtl">'+esc(c.ar)+'</h2><p>'+esc(c.en)+'</p></div></div>'+c.items.map(item => '<div class="item"><div class="names"><span class="ar" dir="rtl">'+esc(item.ar)+'</span><span class="en">'+esc(item.en)+'</span></div><div class="price">'+esc(item.price)+' <small>ج.م</small></div></div>').join('')+'</section>').join('')+'<div class="note">أهلًا بيكم في MILANO CAFE ✦ الأسعار بالجنيه المصري وقد تتغير حسب تحديثات الكافيه.<br><a class="top" href="#top">العودة إلى أعلى القائمة ↑</a></div>';
   }
   async function sync() {
     try {
-      const data = await Promise.all(categories.map(loadSheet));
+      const response = await fetch(CSV_URL + '?t=' + Date.now(), {cache:'no-store'});
+      if (!response.ok) throw new Error('CSV could not be loaded');
+      const rows = parseCSV(await response.text());
+      const header = rows.findIndex(r => r.some(v => v.includes('Item (English)')));
+      if (header < 0) throw new Error('CSV headers not found');
+      const items = rows.slice(header + 1).map(r => ({category:r[0]||'', en:r[1]||'', ar:r[2]||'', price:(r[3]||'').replace(/\s*EGP\s*/i,'').trim()})).filter(x => x.category && x.en && x.ar && x.price);
+      const data = categories.map(c => ({...c, items:items.filter(item => c.keys.includes(item.category))})).filter(c => c.items.length);
+      if (!data.length) throw new Error('No menu items in CSV');
       render(data);
-      status.textContent = 'تم تحديث الأسعار من ملف Google Sheets';
+      status.textContent = 'تم تحديث الأسعار من ملف الأسعار CSV';
       status.style.color = '#d8b45b';
     } catch (err) {
-      status.textContent = 'تعذر الاتصال بملف الأسعار؛ المعروض حاليًا هو آخر منيو محفوظ. تأكد من إتاحة ملف Google Sheets للعرض.';
+      status.textContent = 'تعذر تحديث الأسعار الآن؛ تأكد أن ملف CSV متاح للعامة.';
       status.style.color = '#f0a0a0';
       console.warn('MILANO menu sync failed:', err);
     }
   }
   sync();
-  // Refresh every 60 seconds while the menu remains open.
   setInterval(sync, 60000);
 })();
 </script>
